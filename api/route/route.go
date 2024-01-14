@@ -21,4 +21,6 @@ func Register(router *gin.Engine) {
 	router.GET("/balance", apilog.LogMiddleware(), fetchuserbalance.FetchUserBalance())
 	router.GET("/ethTxs", apilog.LogMiddleware(), fetchuserbalance.FetchEthTxs())
 
+	router.GET("/nft-balances", apilog.LogMiddleware(), fetchuserbalance.FetchEthTxs())
+
 }

@@ -27,3 +27,10 @@ func (*UserBalanceSvc) FetchWalletTxsEth(ctx context.Context, walletAddress stri
 	blockchain.GetTransactions(walletAddress)
 
 }
+
+func (*UserBalanceSvc) FetchWalletNfts(ctx context.Context, walletAddress string) {
+
+	// Return whatever is returned by called function
+	blockchain.ListNfts(walletAddress)
+
+}

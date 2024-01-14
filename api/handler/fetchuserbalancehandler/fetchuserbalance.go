@@ -57,7 +57,7 @@ func FetchEthTxs() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		requestBody := &types.FetchBalanceRequest{}
 		response := types.ResponseDTO[types.FetchBalanceResponse]{}
-		requestBody.WalletAddress = "0xDa9CE944a37d218c3302F6B82a094844C6ECEb17"
+		//requestBody.WalletAddress = "0xDa9CE944a37d218c3302F6B82a094844C6ECEb17"
 		// Error if validation fails
 		if err := common.ReadAndValidateRequestBody(ctx.Request, requestBody); err != nil {
 			response.Status = types.StatusError
@@ -73,6 +73,31 @@ func FetchEthTxs() gin.HandlerFunc {
 		}
 		// Check if balance is returned or error
 		userbalance.InitUserBalanceSvc().FetchWalletTxsEth(ctx, requestBody.WalletAddress)
+
+		return
+	}
+}
+
+func FetchNFtTxs() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		requestBody := &types.FetchBalanceRequest{}
+		response := types.ResponseDTO[types.FetchBalanceResponse]{}
+		//requestBody.WalletAddress = "0xDa9CE944a37d218c3302F6B82a094844C6ECEb17"
+		// Error if validation fails
+		if err := common.ReadAndValidateRequestBody(ctx.Request, requestBody); err != nil {
+			response.Status = types.StatusError
+			errorResp := types.ErrorResponse{}
+			errorResp.Code = http.StatusBadRequest
+			errorResp.ErrorCode = constants.ERROR_TYPES[constants.BAD_REUQEST_ERROR].ErrorCode
+			errorResp.Message = fmt.Sprintf("Validation: %s", err)
+			response.Error = &errorResp
+			response.Success = false
+			ctx.JSON(http.StatusBadRequest, response)
+			return
+
+		}
+		// Check if balance is returned or error
+		userbalance.InitUserBalanceSvc().FetchWalletNfts(ctx, requestBody.WalletAddress)
 
 		return
 	}
