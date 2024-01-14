@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Data</title>
+</head>
+<body>
+
+  <h1>Transaction Data for {{.WalletAddress}}</h1>
+
+  <h2>Transactions</h2>
+  <ul>
+    {{range .Transactions}}
+      <li>From: {{.From}}, To: {{.To}}, Value: {{.Value}}, Block: {{.BlockNumber}}</li>
+    {{end}}
+  </ul>
+
+  <h2>NFT Transfers</h2>
+  <ul>
+    {{range .NFTTransfers}}
+      <li>From: {{.From}}, To: {{.To}}, Token: {{.Token}}, Time: {{.Time}}</li>
+    {{end}}
+  </ul>
+
+</body>
+</html>
