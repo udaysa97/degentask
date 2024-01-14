@@ -44,9 +44,9 @@ If wrong symbol is sent, error displays all valid symbols to help users
 Uses infura and  to communicate with B.C
 
 # Steps to setup on local
-git clone https://github.com/udaysa97/degentask.git
-cd degentask
-go mod tidy
-in .env file add your infura URL to connect to BSC chain and etherscan api key in the provided variables
+1) git clone https://github.com/udaysa97/degentask.git
+2) cd degentask
+3) go mod tidy
+4) in .env file add your infura URL to connect to BSC chain and etherscan api key in the provided variables
 (.env is not added to .gitignore to make it easier to understand where im accepting the secret values)
-go run main.go (ideally should have been in cmd/main.go as per standards)
+5) go run main.go (ideally should have been in cmd/main.go as per standards)
